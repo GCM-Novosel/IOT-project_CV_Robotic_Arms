@@ -1,0 +1,7 @@
+WIFI_SSID = "AndroidAP"
+WIFI_PASSWORD = "19041986"
+
+MQTT_BROKER = "industrial.api.ubidots.com"
+MQTT_PORT = 1883
+MQTT_USERNAME = "BBUS-0tCkaPMdIeHnTx63ArN7jDUhlxZ4yh"
+MQTT_PASSWORD = "BBUS-0tCkaPMdIeHnTx63ArN7jDUhlxZ4yh"
