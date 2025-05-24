@@ -42,16 +42,36 @@ Each finger is individually controlled by a servo motor. The systems differ in i
 
 ---
 
-## ☁️ System 2: MQTT-Controlled Robotic Hand
 
-- UI runs on an **Orange Pi** with a touchscreen (Tkinter).
-- User can control individual fingers or send predefined gestures.
-- Gesture → Angle mapping like:
+### 🖥️ System 2 – Touchscreen UI and MQTT Publisher
+
+The interface runs fullscreen using **Tkinter**, offering two main interaction modes:
+
+#### 🔘 Finger Mode:
+- Each finger (index, middle, ring, pinkie, thumb) has a dedicated on-screen button.
+- Tapping a button toggles the state (open/close), publishing a value (0 or 180) over MQTT.
+- Useful for manual fine control.
+
+#### ✋ Gesture Mode:
+- Displays buttons for predefined hand gestures.
+- When a gesture is selected, a **list of servo angles** is published (one angle per finger) to 5 separate MQTT topics.
+- Each gesture is a high-level command mapped to multiple finger movements.
+
+### Code Highlights
+- `touch_ui_with_mapping.py`
+- `code.py`
+
+
+#### Example gesture mapping:
 
 ```python
 POSES = {
     "peace":    [0, 0, 180, 180, 120],
     "rock_on":  [0, 180, 180, 0, 120],
+    "ok":       [180, 180, 180, 180, 0],
     "fist":     [180, 180, 180, 180, 120],
-    ...
+    "open":     [0, 0, 0, 0, 0]
 }
+
+
+---
